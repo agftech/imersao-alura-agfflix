@@ -8,14 +8,12 @@ import Page404 from "./pages/404";
 import CadastroVideo from "./pages/cadastro/Video";
 import CadastroCategoria from "./pages/cadastro/Categoria";
 
-// Desafio master blaster na descrição
-// Colocar um jogo nessa página: https://www.youtube.com/watch?v=jOAU81jdi-c :)
 ReactDOM.render(
 	<BrowserRouter>
 		<Switch>
 			<Route path='/' component={Home} exact />
-			<Route path='/cadastro/categoria' component={CadastroCategoria} />
 			<Route path='/cadastro/video' component={CadastroVideo} />
+			<Route path='/cadastro/categoria' component={CadastroCategoria} />
 			<Route component={Page404} />
 		</Switch>
 	</BrowserRouter>,

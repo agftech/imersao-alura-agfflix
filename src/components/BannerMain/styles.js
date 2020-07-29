@@ -25,9 +25,9 @@ ContentAreaContainer.Item = styled.div`
 `;
 
 ContentAreaContainer.Category = styled.h1`
-	font-family: Ubuntu;
-	font-style: sans-serif;
-	font-weight: sans-serif;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
 	font-size: 60px;
 	line-height: 70px;
 	display: flex;
@@ -52,7 +52,7 @@ ContentAreaContainer.Description = styled.p`
 `;
 
 ContentAreaContainer.Title = styled.h2`
-	font-style: sans-serif;
+	font-style: normal;
 	font-weight: 300;
 	font-size: 40px;
 	line-height: 1;
@@ -60,7 +60,7 @@ ContentAreaContainer.Title = styled.h2`
 	margin-bottom: 32px;
 
 	@media (max-width: 800px) {
-		font-size: 82px;
+		font-size: 32px;
 		text-align: center;
 	}
 `;
@@ -101,7 +101,7 @@ export const BannerMainContainer = styled.section`
 `;
 
 export const WatchButton = styled.button`
-	font-family: "Ubuntu", sans-serif;
+	font-family: "Roboto", sans-serif;
 	box-sizing: border-box;
 	cursor: pointer;
 	padding: 16px 24px;
@@ -113,7 +113,7 @@ export const WatchButton = styled.button`
 	text-decoration: none;
 	display: inline-block;
 	border: 1px solid transparent;
-	color: var(--white);
+	color: var(--black);
 	background: var(--secondary);
 	border-color: var(--black);
 	transition: opacity 0.3s;

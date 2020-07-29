@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../src/assets/agfflix-404.svg";
+import Logo from "../../../src/assets/img/agfflix-404.svg";
 
 function Page404() {
 	return (

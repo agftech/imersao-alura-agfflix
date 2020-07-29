@@ -26,7 +26,7 @@ a {
 }
 
 #root {
-  min-height: calc(100vh - var(--bodyPaddingTop));
-  display: flex;
-  flex-direction: column;
+	min-height: calc(100vh - var(--bodyPaddingTop));
+	display: flex;
+	flex-direction: column;
 }
