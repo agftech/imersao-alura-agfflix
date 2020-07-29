@@ -1,16 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/agfflix.svg";
 import "./Menu.css";
-import Button from "../../components/Button";
+import Button from "../Button";
 
 function Menu() {
 	return (
 		<nav className='Menu'>
-			<a href='/'>
+			<Link to='/'>
 				<img src={Logo} className='Logo' alt='agfflix' />
-			</a>
+			</Link>
 
-			<Button as='a' className='ButtonLink' href='/'>
+			<Button as={Link} className='ButtonLink' to='/cadastro/video'>
 				Novo Vídeo
 			</Button>
 		</nav>
