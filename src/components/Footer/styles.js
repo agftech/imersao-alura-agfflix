@@ -1,4 +1,6 @@
-import styled from "styled-components";
+/* eslint-disable no-tabs */
+/* eslint-disable import/prefer-default-export */
+import styled from 'styled-components';
 
 export const FooterBase = styled.footer`
 	background: var(--black);
