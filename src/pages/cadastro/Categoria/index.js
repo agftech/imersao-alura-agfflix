@@ -4,57 +4,44 @@ import PageDefault from '../../../components/PageDefault';
 import '../index.css';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
-  const [categories, setCategories] = useState([]);
   const initialValues = {
     nome: '',
     descricao: '',
     cor: '',
   };
-  const [values, setValues] = useState(initialValues);
+
+  const { handleChangeEvent, values, clearForm } = useForm(initialValues);
+  const [categorias, setCategorias] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setCategories([...categories, values]);
-
-    setValues(initialValues);
+    setCategorias([...categorias, values]);
+    clearForm();
   };
 
-  function setValue(chave, valor) {
-    // chave: nome, descricao ...
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor'
-    });
-  }
-
-  function handleChangeEvent(event) {
-    setValue(event.target.getAttribute('name'), event.target.value);
-  }
-
   useEffect(() => {
-    if (window.location.href.includes('localhost')) {
-      const URL = 'http://localhost:8080/categories';
-      fetch(URL)
-        .then(async (respostaDoServer) => {
-          if (respostaDoServer.ok) {
-            const resposta = await respostaDoServer.json();
-            setCategories(resposta);
-            return;
-          }
-          throw new Error('Não foi possível pegar os dados');
-        });
-    }
+    const URL_TOP = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://agfflix.herokuapp.com/categorias';
+    fetch(URL_TOP)
+      .then(async (respostaDoServidor) => {
+        const resposta = await respostaDoServidor.json();
+        setCategorias([
+          ...resposta,
+        ]);
+      });
   }, []);
 
   return (
     <PageDefault>
       <div>
-        <h3>
+        <h2>
           Nova Categoria:
           {values.nome}
-        </h3>
+        </h2>
         <br />
       </div>
 
@@ -83,16 +70,17 @@ function CadastroCategoria() {
         <Button>Cadastrar</Button>
       </form>
 
-      {categories.length === 5 && (
+      {categorias.length === 0 && (
         <div>
+          <br />
           Loading...
         </div>
       )}
-      <h3>Categorias de Vídeo:</h3>
+      <h2>Categorias de Vídeo:</h2>
       <ul>
-        {categories.map((category, index) => (
-          <li key={`${category}${index}`}>
-            {category.titulo}
+        {categorias.map((categoria) => (
+          <li key={`${categoria.titulo}`}>
+            {categoria.titulo}
           </li>
         ))}
       </ul>
@@ -100,6 +88,7 @@ function CadastroCategoria() {
       <Link as={Link} className="ButtonLink" to="/">
         Ir para Home
       </Link>
+      <p />
     </PageDefault>
   );
 }

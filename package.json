@@ -6,6 +6,7 @@
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
 		"@testing-library/user-event": "^7.1.2",
+		"bn.js": "4.11.9",
 		"eslint-formatter-pretty": "^4.0.0",
 		"json-server": "^0.16.1",
 		"prop-types": "^15.7.2",
@@ -18,13 +19,13 @@
 		"websocket-extensions": "0.1.4"
 	},
 	"scripts": {
-		"start": "node ./server.js",
-		"dev": "concurrently \"react-scripts start\" \"node ./server.js\"",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject",
+		"dev": "concurrently \"react-scripts start\" \"node ./server.js\"",
+		"start": "node ./server.js",
+		"server": "node ./server.js",
 		"server:static": "json-server --watch ./src/data/db.json --port 8080",
-		"server": "node ./server.js"
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
