@@ -11,7 +11,7 @@ function CadastroVideo() {
 	const history = useHistory();
 	const [categorias, setCategorias] = useState([]);
 	const categoryTitles = categorias.map(({ titulo }) => titulo);
-	const { handleChangeEvent, values } = useForm({
+	const { handleChangeEvent, clearForm, values } = useForm({
 		titulo: 'Video padrão',
 		url: 'https://www.youtube.com/watch?v=jOAU81jdi-c',
 		categoria: 'Front End',
@@ -25,13 +25,16 @@ function CadastroVideo() {
 			});
 	}, []);
 
+	function handleClearForm(event) {
+		event.preventDefault();
+		clearForm();
+	}
+
 	return (
 		<PageDefault>
-			<h1>Cadastro de Video</h1>
 
 			<form onSubmit={(event) => {
 				event.preventDefault();
-				// alert('Video Cadastrado com sucesso!!!1!');
 
 				const categoriaEscolhida = categorias.find((categoria) => categoria.titulo === values.categoria);
 
@@ -46,6 +49,21 @@ function CadastroVideo() {
 					});
 			}}
 			>
+				<h1>Cadastre Novo Video</h1>
+
+				<div className="buttonsActions">
+					<FormField
+						label="Selecione uma Categoria"
+						name="categoria"
+						value={values.categoria}
+						onChange={handleChangeEvent}
+						suggestions={categoryTitles}
+					/>
+					<Button as={Link} to="/cadastro/categoria">
+						Nova Categoria
+          </Button>
+				</div>
+
 				<FormField
 					label="Título do Vídeo"
 					name="titulo"
@@ -59,26 +77,15 @@ function CadastroVideo() {
 					value={values.url}
 					onChange={handleChangeEvent}
 				/>
-
-				<FormField
-					label="Categoria"
-					name="categoria"
-					value={values.categoria}
-					onChange={handleChangeEvent}
-					suggestions={categoryTitles}
-				/>
-
-				<Button type="submit">
-					Cadastrar
-        </Button>
+				<div className="buttonsActions">
+					<Button type="submit">
+						Salvar
+          </Button>
+					<Button type="button" onClick={handleClearForm}>
+						Cancelar
+          </Button>
+				</div>
 			</form>
-
-			<br />
-			<br />
-
-			<Link className="ButtonLink" to="/cadastro/categoria">
-				Cadastrar Categoria
-      </Link>
 			<p />
 		</PageDefault>
 	);

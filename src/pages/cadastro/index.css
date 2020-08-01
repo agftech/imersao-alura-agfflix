@@ -56,3 +56,21 @@ button:focus,
 button:hover {
 	opacity: 0.5;
 }
+
+.buttonsActions {
+	display: flex;
+	flex-direction: initial;
+	align-items: top;
+	text-align: center;
+	height: 54px;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+
+th {
+	border: 0.5px solid white;
+}
+
+td {
+	border: 0.3px solid white;
+}

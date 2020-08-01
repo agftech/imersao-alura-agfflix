@@ -33,17 +33,17 @@ Label.Text = styled.span`
 `;
 
 const Input = styled.input`
-  background: #53585D;
+  background: var(--blackLighter);
   color: #F5F5F5;
-  display: block;
+  display: flex;
   width: 100%;
-  height: 57px;
+  height: 54px;
   font-size: 18px;
   
   outline: 0;
   border: 0;
   border-top: 4px solid transparent;
-  border-bottom: 4px solid #53585D;
+  border-bottom: 4px solid #db201c;
   
   padding: 16px 16px;
   margin-bottom: 45px;

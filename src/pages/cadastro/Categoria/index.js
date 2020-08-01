@@ -37,15 +37,11 @@ function CadastroCategoria() {
 
   return (
     <PageDefault>
-      <div>
+      <form style={{ background: values.cor }} onSubmit={handleSubmit}>
         <h2>
-          Nova Categoria:
+          Cadastre Nova Categoria:
           {values.nome}
         </h2>
-        <br />
-      </div>
-
-      <form style={{ background: values.cor }} onSubmit={handleSubmit}>
         <FormField
           label="Nome da Categoria "
           type="text"
@@ -60,6 +56,7 @@ function CadastroCategoria() {
           value={values.descricao}
           onChange={handleChangeEvent}
         />
+
         <FormField
           label="Cor "
           type="color"
@@ -67,7 +64,14 @@ function CadastroCategoria() {
           value={values.cor}
           onChange={handleChangeEvent}
         />
-        <Button>Cadastrar</Button>
+        <div className="buttonsActions">
+          <Button type="submit">
+            Salvar
+          </Button>
+          <Button type="button">
+            Cancelar
+          </Button>
+        </div>
       </form>
 
       {categorias.length === 0 && (
@@ -76,18 +80,41 @@ function CadastroCategoria() {
           Loading...
         </div>
       )}
-      <h2>Categorias de Vídeo:</h2>
-      <ul>
-        {categorias.map((categoria) => (
-          <li key={`${categoria.titulo}`}>
-            {categoria.titulo}
-          </li>
-        ))}
-      </ul>
-
-      <Link as={Link} className="ButtonLink" to="/">
-        Ir para Home
-      </Link>
+      <p />
+      <form>
+        <h2>Categorias de Vídeo:</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>RGB Color</th>
+              <th>
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {categorias.map((categoria, index) => (
+              <tr key={index}>
+                <td>{categoria.titulo}</td>
+                <td>{categoria.cor}</td>
+                <td>
+                  <td>
+                    <Link> E</Link>
+                  </td>
+                  <td>
+                    <Link> D</Link>
+                  </td>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p />
+        <Button as={Link} to="/">
+          Ir para Home
+        </Button>
+      </form>
       <p />
     </PageDefault>
   );
